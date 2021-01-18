@@ -11,7 +11,7 @@ namespace App\Repository;
 
 use App\Entity\PauseEvent;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method PauseEvent|null find($id, $lockMode = null, $lockVersion = null)

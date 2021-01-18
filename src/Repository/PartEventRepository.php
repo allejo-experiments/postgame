@@ -11,7 +11,7 @@ namespace App\Repository;
 
 use App\Entity\PartEvent;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method PartEvent|null find($id, $lockMode = null, $lockVersion = null)
