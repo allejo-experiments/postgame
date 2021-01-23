@@ -10,7 +10,7 @@
 namespace App\Twig;
 
 use App\Entity\MapThumbnail;
-use App\Service\MapThumbnailWriterService;
+use App\Service\MapFileWriterService;
 use App\Twig\Exception\MissingExtensionException;
 use Symfony\Bridge\Twig\Extension\AssetExtension;
 use Twig\Environment;
@@ -47,7 +47,7 @@ class MapThumbnailExtension extends AbstractExtension
         /** @var AssetExtension $assetExtension */
         $assetExtension = $this->environment->getExtension(AssetExtension::class);
         $thumbnailURL = vsprintf('generated/%s/%s.svg', [
-            MapThumbnailWriterService::FOLDER_NAME,
+            MapFileWriterService::FOLDER_NAME,
             $thumbnail->getWorldHash(),
         ]);
 
