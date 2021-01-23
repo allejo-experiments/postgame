@@ -77,7 +77,7 @@ class ReplayImportService
     /** @var LoggerInterface */
     private $logger;
 
-    /** @var MapFileWriterService */
+    /** @var MapThumbnailWriterService */
     private $thumbnailWriterService;
 
     /** @var HeatMapWriterService */
@@ -203,7 +203,7 @@ class ReplayImportService
     private $worldSize;
 
     public function __construct(EntityManagerInterface $em, LoggerInterface $logger,
-                                MapFileWriterService $thumbnailWriterService, HeatMapWriterService $heatMapWriterService)
+                                MapThumbnailWriterService $thumbnailWriterService, HeatMapWriterService $heatMapWriterService)
     {
         $this->em = $em;
         $this->logger = $logger;
@@ -250,7 +250,7 @@ class ReplayImportService
 
         $this->worldSize = WorldBoundary::fromWorldDatabase($replay->getWorldDatabase())->getWorldWidthX();
 
-        $this->heatMapSize = $this->worldSize / $this::WORLD_HEATMAP_RATIO;
+        $this->heatMapSize = max($this->worldSize / $this::WORLD_HEATMAP_RATIO, 10);
 
         $existing = $this->em->getRepository(Replay::class)->findOneBy([
             'fileHash' => $sha1,
@@ -783,7 +783,7 @@ class ReplayImportService
             $playerHeatmap->setPlayer($this->currPlayersByCallsign[$callsign]);
             $playerHeatmap->setHeatmap($heatmap->movement);
 
-            $this->heatMapWriterService->writeHeatMap($this->currReplay, $playerHeatmap, $this->SVGSize, $callsign);
+            $this->heatMapWriterService->writeHeatMap($this->currReplay, $playerHeatmap, $this->worldSize, $callsign);
 
             $this->em->persist($playerHeatmap);
         }

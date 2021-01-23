@@ -21,7 +21,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
-class MapFileWriterService implements IFileWriter
+class MapThumbnailWriterService implements IFileWriter
 {
     use FileWriterTrait;
 
@@ -88,13 +88,5 @@ class MapFileWriterService implements IFileWriter
         $this->writeFile($svgFilename, $svgOutput);
     }
 
-    private function writeFile(string $filename, string $content): void
-    {
-        $this->fs->dumpFile($this->getFilePath($filename), $content);
-    }
 
-    private function getFilePath(string $filename): string
-    {
-        return sprintf('%s/%s/%s', $this->targetDirectory, self::FOLDER_NAME, $filename);
-    }
 }
