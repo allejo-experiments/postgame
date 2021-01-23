@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 /*
  * (c) Vladimir "allejo" Jimenez <me@allejo.io>
@@ -12,9 +13,9 @@ namespace App\Repository;
 use App\Entity\KnownMap;
 use App\Entity\Replay;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Replay|null find($id, $lockMode = null, $lockVersion = null)

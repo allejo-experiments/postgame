@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 /*
  * (c) Vladimir "allejo" Jimenez <me@allejo.io>
@@ -15,7 +16,6 @@ interface IFileWriter
 
     /**
      * @required
-     * @param string $directory
      */
     public function setFileDirectory(string $directory);
 }
